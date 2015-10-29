@@ -44,8 +44,9 @@ sub bigfunc
 	sub func1
 	{
 		print "X is... $x\n";
-		local $x = 10;			# The $x passed in is changed from 3 to 10
+		local $x = 10;			# The $x is changed from 3 to 10
 		print "X is... $x\n";
+		# If 'local' wasn't there, it'd change the $x outside of this function.
 	}
 
 	sub func2
@@ -65,6 +66,12 @@ sub bigfunc
 }
 
 &bigfunc;
+
+# The difference between dynamic scoping defined in the book and dynamic
+# scoping in Perl is the fact that the programmer has some control over how
+# variables are scoped. Using the 'local' and 'my' functions allows the
+# programmer to control if a variable is only for that block or if it is
+# inherited throughout child subroutine calls.
 
 # Sources:
 # http://perldoc.perl.org/functions/local.html
